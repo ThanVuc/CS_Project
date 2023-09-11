@@ -1,0 +1,32 @@
+{% extends "encyclopedia/layout.html" %}
+{% load static %}
+
+{% block title %}
+    Create Page
+{% endblock %}
+{% block custom_css %}
+<style>
+.save{
+    position: absolute;
+    left: 10px;
+    bottom: 50px;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.save:hover{
+    background-color: rgb(210, 208, 208);
+}
+</style>
+{% endblock %}
+{% block body %}
+    <h1>Create Page</h1>
+    {% if check %}
+        <p>Errors, Title is duplicated</p>
+    {% endif %}
+    <form action="{% url 'encyclopedia:create' %}" method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Save" class="save">
+    </form>
+{% endblock %}

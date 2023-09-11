@@ -36,3 +36,15 @@ textarea {
 .sidebar h2 {
     margin-top: 5px;
 }
+
+.text-record{
+    resize: none;
+    width: 50vw;
+    height: 60vh;
+}
+
+.text-record {
+    resize: none;
+    height: 50vh;
+    width: 40vw;
+}

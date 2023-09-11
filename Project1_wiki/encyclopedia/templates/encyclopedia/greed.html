@@ -1,11 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {{util}}
-</body>
-</html>
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block custom_css %}
+<style>
+    .solid{
+        width: 100vw;
+        border: 1px rgb(198, 198, 198) solid;
+        position: relative;
+        right: 10px;
+    }
+    .edit{
+        width: 25px;
+        height: 20px;
+        background-color: rgb(63, 223, 223);
+        padding: 10px;
+        border: 1px black solid;
+        border-radius: 4px;
+        text-decoration: none;
+        color: black;
+        position: relative;
+        top: 40px;
+    }
+
+    .edit:hover{
+        background-color: rgb(133, 206, 206);;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+    {% if util %}
+        {{util|safe}}
+    {% else %}
+        <h1>Page Was Not Found!</h1>
+    {% endif %}
+    <p class="solid"></p>
+    <a href="{% url 'encyclopedia:edit' title%}" class="edit">Edit</a>
+
+{% endblock %}

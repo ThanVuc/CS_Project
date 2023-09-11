@@ -1,0 +1,28 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Edit Page
+{% endblock %}
+{% block custom_css %}
+<style>
+.save{
+    position: absolute;
+    left: 10px;
+    bottom: 18vh;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.save:hover{
+    background-color: rgb(210, 208, 208);
+}
+</style>
+{% endblock %}
+{% block body %}
+    <h1>Edit Page</h1>
+    <form action="{% url 'encyclopedia:edit' entry %}" method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Save Edits" class="save">
+    </form>
+{% endblock %}
