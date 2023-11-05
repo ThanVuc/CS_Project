@@ -1,0 +1,41 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+    <title>Listing</title>
+{% endblock %}
+
+{% block body %}
+<h2>Listing: {{listing.title}}</h1>
+<form action="{% url 'auctions:watchlist' %}" method="post">
+{% csrf_token %}
+    {% if in_watchlist %}
+        <button value="{{listing.id}}" name="listing_id">Remove WatchList</button>
+    {% else %}
+        <button value="{{listing.id}}" name="listing_id">Add WatchList</button>
+    {% endif %}
+</form>
+
+<img src="{{listing.imgurls}}" alt="">
+<br>
+<h3><q>{{listing.decription}}</q></h3>
+<br>
+<h2>{{listing.currentbid}}$</h2>
+<p>{{num_of_bid}} bids so far.</p>
+{% if case == 1 %}
+    <p>Your bid is the current bid</p>
+{% elif case == 2  %}
+    <p>Your bid was pressed down</p>
+{% endif %}
+<form action="{% url 'auctions:place_bid' listing.id %}" method="post">
+    {% csrf_token %}
+    <input type="number" step="0.01" name="bid">
+    <input type="submit" value="Place Bid">
+</form>
+{{bid_massage}}
+<h2>Details</h2>
+<ul>
+    <li>List By: {{listing.usercreate.last_name}}</li>
+    <li>Category: {{listing.category.name}}</li>
+    <li>Time List: {{listing.time}}</li>
+</ul>
+{% endblock %}

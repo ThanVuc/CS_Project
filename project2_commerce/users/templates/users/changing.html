@@ -1,0 +1,20 @@
+{% extends "users/layout.html" %}
+{% block title %}
+    <title>Change Password</title>
+{% endblock %}
+
+{% block body %}
+    <h2>Changing Password:</h2>
+    <h3>{{message}}</h3>
+    <br>
+    <form action="{% url 'users:changing' %}" method="post">
+        {% csrf_token %}
+        <label for="password">Current Password: </label>
+        <input type="password" name="password" id="password">
+        <label for="newpassword">New Password: </label>
+        <input type="password" name="newpassword" id="newpassword">
+        <label for="confirm">Confirmation: </label>
+        <input type="password" name="confirm" id="confirm">
+        <input type="submit" value="Changing Password">
+    </form>
+{% endblock %}

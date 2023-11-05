@@ -1,0 +1,20 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+<title>Category</title>
+{% endblock %}
+
+{% block body %}
+    {% if announce %}
+        <h2>{{announce}}</h2>
+    {% endif %}
+    {% for item in categorylist %}
+        <img src="{{item.imgurls}}" alt="">
+        <h5>{{item.title}}</h5>
+        <h5>Price: {{item.currentbid}}$</h5>
+        <h5>{{item.decription}}</h5>
+        <p>{{item.time}}</p>
+        <a href="{% url 'auctions:listing' item.id %}">View By Listing</a>
+        <br>
+    {% endfor %}
+{% endblock %}

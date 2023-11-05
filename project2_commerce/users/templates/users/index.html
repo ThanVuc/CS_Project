@@ -1,0 +1,9 @@
+{% extends "users/layout.html" %}
+{% block title %}
+    <title>Login | Register</title>
+{% endblock %}
+
+{% block body %}
+    <h2 style="text-align: center;">Please, <a href="{% url 'users:login' %}">Login</a> to use this function</h2>
+    <h2 style="text-align: center;"> If you have not already account, please <a href="{% url 'users:register' %}">Register</a> account</h2>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+<title>WatchList</title>
+{% endblock %}
+
+{% block body %}
+    {% for item in listings %}
+        <img src="{{item.imgurls}}" alt="">
+        <h5>{{item.title}}</h5>
+        <h5>Price: {{item.currentbid}}$</h5>
+        <h5>{{item.decription}}</h5>
+        <p>{{item.time}}</p>
+        <a href="{% url 'auctions:listing' item.id %}">View By Listing</a>
+        <br>
+    {% endfor %}
+{% endblock %}
