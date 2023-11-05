@@ -1,24 +1,6 @@
-{% extends "auctions/layout.html" %}
+{% extends "auctions/listing_layout.html" %}
 
-{% block title %}
-    <title>Listing</title>
-{% endblock %}
-
-{% block body %}
-<h2>Listing: {{listing.title}}</h1>
-<form action="{% url 'auctions:watchlist' %}" method="post">
-{% csrf_token %}
-    {% if in_watchlist %}
-        <button value="{{listing.id}}" name="listing_id">Remove WatchList</button>
-    {% else %}
-        <button value="{{listing.id}}" name="listing_id">Add WatchList</button>
-    {% endif %}
-</form>
-
-<img src="{{listing.imgurls}}" alt="">
-<br>
-<h3><q>{{listing.decription}}</q></h3>
-<br>
+{% block bid %}
 <h2>{{listing.currentbid}}$</h2>
 <p>{{num_of_bid}} bids so far.</p>
 {% if case == 1 %}
@@ -32,10 +14,16 @@
     <input type="submit" value="Place Bid">
 </form>
 {{bid_massage}}
-<h2>Details</h2>
-<ul>
-    <li>List By: {{listing.usercreate.last_name}}</li>
-    <li>Category: {{listing.category.name}}</li>
-    <li>Time List: {{listing.time}}</li>
-</ul>
+{% endblock %}
+
+{% block comment %}
+<br>
+
+<form action="{% url 'auctions:comment' listing.id %}" method="post">
+{% csrf_token %}
+    <textarea name="content" cols="100vw" rows="5" autofocus placeholder="Pleases Write Your Comments"></textarea>
+    <br>
+    <input type="submit" value="Comment" name="submit">
+</form>
+<br>
 {% endblock %}

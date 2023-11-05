@@ -11,7 +11,7 @@ def index(request):
     if not request.user.is_authenticated:
         return render(request, "users/index.html")
     else:
-        return render(request, "auctions/index.html")
+        return HttpResponseRedirect(reverse("auctions:index"))
 
 def login_view(request):
     if request.method== "POST":
@@ -31,7 +31,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return render(request, "auctions/index.html", {
+    return render(request, "users/index.html", {
         'message': "Logged Out"
     }) 
 

@@ -13,12 +13,12 @@ class Listing(models.Model):
     decription= models.CharField(max_length=512)
     time= models.DateTimeField(auto_now=True)
     watchlist= models.ManyToManyField(User, blank=True, related_name="watchlist")
-    usercreate= models.ForeignKey(User, on_delete=models.CASCADE, related_name="createlist")
+    create_user= models.ForeignKey(User, on_delete=models.CASCADE, related_name="createlist")
     category= models.ForeignKey(Category, on_delete= models.CASCADE, related_name="listcategory")
     winner= models.ForeignKey(User, null=True ,on_delete=models.CASCADE, related_name="wasbid", blank=True)
     currentbid= models.FloatField()
     imgurls= models.URLField(blank=True, max_length=512)
-    is_native= models.BooleanField(default=True)
+    is_active= models.BooleanField(default=True)
 
 class Bid(models.Model):
     bidder= models.ForeignKey(User, on_delete=models.CASCADE, related_name="bidders")

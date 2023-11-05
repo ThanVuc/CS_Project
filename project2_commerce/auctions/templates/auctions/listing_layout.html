@@ -1,0 +1,51 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+    <title>Listing</title>
+{% endblock %}
+
+{% block body %}
+<h2>Listing: {{listing.title}}</h1>
+    <form action="{% url 'auctions:close' listing.id %}" method="post">
+    {% csrf_token %}
+    {% if listing.create_user == request.user and listing.is_active == True %}
+        <input type="submit" value="Close">
+    {% endif %}
+    </form>
+<form action="{% url 'auctions:watchlist' %}" method="post">
+{% csrf_token %}
+    {% if in_watchlist %}
+        <button value="{{listing.id}}" name="listing_id">Remove WatchList</button>
+    {% else %}
+        <button value="{{listing.id}}" name="listing_id">Add WatchList</button>
+    {% endif %}
+</form>
+
+<img src="{{listing.imgurls}}" alt="">
+<br>
+<h3><q>{{listing.decription}}</q></h3>
+<br>
+{% block bid %}
+{% endblock %}
+
+{% block comment %}
+{% endblock %}
+{% for cmt in comments %}
+    {{cmt.content}}
+    <br>
+    ~By: {{cmt.author.last_name}}
+    <br>
+{% endfor %}
+<br>
+<form action="{% url 'auctions:comment' listing.id %}" method="post">
+    {% csrf_token %}
+    <input type="submit" name="more_cmt" value="Display More Comments">
+</form>
+<br>
+<h2>Details</h2>
+<ul>
+    <li>List By: {{listing.usercreate.last_name}}</li>
+    <li>Category: {{listing.category.name}}</li>
+    <li>Time List: {{listing.time}}</li>
+</ul>
+{% endblock %}
