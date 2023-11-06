@@ -1,0 +1,91 @@
+html{
+    font-family: sans-serif;
+}
+
+.head{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.btwatch-remove{
+    padding: 10px 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: rgb(240, 151, 143);
+    margin-left: 10px;
+}
+
+.btwatch-add{
+    margin-left: 10px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: rgb(99, 234, 196);
+}
+
+.img-decription{
+    width: 100vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.img{
+    width: 25vw;
+    height: 35vh;
+    object-fit: contain;
+    margin-right: 20px;
+    display: flex;
+    align-self: center;
+}
+
+.bid-active{
+    height: 35vh;
+    width: 24vw;
+    position: relative;
+    left: 36vw;
+}
+
+.announce{
+    display: flex;
+    flex-direction: row;
+}
+
+.bid-place{
+    display: flex;
+    flex-direction: column;
+}
+
+.comment{
+    height: 25vh;
+    width: 60vw;
+    margin-left: 17vw;
+    border-bottom: 2px solid;
+}
+
+.comment-display{
+    height: 25vh;
+    width: 60vw;
+    margin-left: 17vw;
+}
+
+.cmt{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    bottom: 10px;
+    margin-bottom: -18px;
+}
+.detail{
+    border-top: 1px dashed;
+    margin-top: 3vh;
+    height: 20vh;
+    width: 99vw;
+    margin-left: -17vw;
+}
+
+.close{
+    text-align: center;
+    border-bottom: 1px dashed;
+}

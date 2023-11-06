@@ -17,7 +17,7 @@ class Listing(models.Model):
     category= models.ForeignKey(Category, on_delete= models.CASCADE, related_name="listcategory")
     winner= models.ForeignKey(User, null=True ,on_delete=models.CASCADE, related_name="wasbid", blank=True)
     currentbid= models.FloatField()
-    imgurls= models.URLField(blank=True, max_length=512)
+    imgurls= models.URLField(blank=True)
     is_active= models.BooleanField(default=True)
 
 class Bid(models.Model):

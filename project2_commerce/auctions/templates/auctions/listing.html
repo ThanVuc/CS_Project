@@ -1,29 +1,40 @@
 {% extends "auctions/listing_layout.html" %}
 
 {% block bid %}
-<h2>{{listing.currentbid}}$</h2>
-<p>{{num_of_bid}} bids so far.</p>
-{% if case == 1 %}
-    <p>Your bid is the current bid</p>
-{% elif case == 2  %}
-    <p>Your bid was pressed down</p>
-{% endif %}
-<form action="{% url 'auctions:place_bid' listing.id %}" method="post">
-    {% csrf_token %}
-    <input type="number" step="0.01" name="bid">
-    <input type="submit" value="Place Bid">
+<div class="bid-active">
+    <h2 style="margin-left: 8vw;">{{listing.currentbid}}$</h2>
+    <div class="announce">
+        <p style="margin-right: 3px; margin-top: -10px;">{{num_of_bid}} bids so far.</p>
+        {% if case == 1 %}
+        <p style="margin-top: -10px; color: rgb(7, 91, 91);">Your bid is the current bid</p>
+        {% elif case == 2 %}
+        <p style="margin-top: -10px; color: red;">Your bid was pressed down</p>
+        {% endif %}
+    </div>
+
+
+    <form action="{% url 'auctions:place_bid' listing.id %}" method="post">
+        {% csrf_token %}
+        <div class="bid-place">
+        <input type="number" step="0.01" name="bid" style="width: 21vw; padding: 10px 0;margin-bottom: 10px;">
+        <input type="submit" value="Place Bid" style="width: 10vw; padding: 6px 0; margin: 0 0 10px 4.7vw; background-color: rgb(160, 235, 226);">
+        </div>
 </form>
-{{bid_massage}}
+
+<div class="announce" style="color: red;">
+    {{bid_massage}}
+</div>
+</div>
 {% endblock %}
 
 {% block comment %}
-<br>
-
-<form action="{% url 'auctions:comment' listing.id %}" method="post">
-{% csrf_token %}
-    <textarea name="content" cols="100vw" rows="5" autofocus placeholder="Pleases Write Your Comments"></textarea>
-    <br>
-    <input type="submit" value="Comment" name="submit">
-</form>
-<br>
+<div class="comment">
+    <form action="{% url 'auctions:comment' listing.id %}" method="post">
+        {% csrf_token %}
+        <textarea autofocus="false" name="content" cols="100vw" rows="5"
+            placeholder="Pleases Write Your Comments"></textarea>
+        <br>
+        <input type="submit" value="Comment" name="submit" style="padding: 8px; background-color: rgb(127, 215, 253);">
+    </form>
+</div>
 {% endblock %}

@@ -7,26 +7,32 @@
 {% block body %}
 <h1>Create Listing: </h1>
 <style>
-    input{
-        margin-bottom: 40px;
+    .base-attr{
+        height: 40vh;
+        width: 40vw;
+        display: flex;
+        justify-content: space-between;
+    }
+    .inp{
+        height: 4vh;
+        width: 15vw;
     }
 </style>
     <h3>{{message}}</h3>
     <form action="{% url 'auctions:create' %}" method="post">
     {% csrf_token %}
-        <label for="title">Title: </label>
-        <input type="text" name="title" id="title">
-        <br>
-        <label for="decription">Decription: </label>
-        <textarea name="decription" id="decription" cols="30" rows="3"></textarea>
-        <br>
-        <label for="startingbid">Starting Bid: </label>
-        <input type="text" name="startingbid" id="startingbid">
-        <br>
-        <label for="img_url">Image Urls: </label>
-        <input type="url" name="img_url" id="img-url">
-        <br>
-        <select name="category">
+<div class="base-attr">
+    <div>
+        <p>Title: </p>
+        <input type="text" name="title" class="inp">
+        <p>Starting Bid: </p>
+        <input type="text" name="startingbid" class="inp">
+        <p>Image Urls: </p>
+        <input type="url" name="img_url" id="img-url" class="inp">
+    </div>
+    <div>
+        <p>Select Category: </p>
+        <select name="category" style="height: 5vh">
             <option value="Book">Book</option>
             <option value="Course">Course</option>
             <option value="Ticket">Ticket</option>
@@ -40,8 +46,14 @@
             <option value="Houseware">Houseware</option>
             <option value="Clothes">Clothes</option>
         </select>
-        <br>
-        <input type="submit" value="Create Listing">
+    </div>
+</div>
+    <div>
+        <p>Decription: </p>
+        <textarea name="decription" cols="50vw" rows="6"></textarea>
+    </div>
+        <input type="submit" value="Create Listing" style="padding: 7px 17px; margin-top: 10px;">
+        <div style="margin-bottom: 10vh;"></div>
     </form>
 
 {% endblock %}

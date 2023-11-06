@@ -6,15 +6,20 @@
 
 {% block body %}
     {% if announce %}
-        <h2>{{announce}}</h2>
+    <h2>{{announce}}</h2>
     {% endif %}
     {% for item in categorylist %}
-        <img src="{{item.imgurls}}" alt="">
-        <h5>{{item.title}}</h5>
-        <h5>Price: {{item.currentbid}}$</h5>
-        <h5>{{item.decription}}</h5>
-        <p>{{item.time}}</p>
+    <div class="listing-info">
+    <div  class="lst-img">
+    <img src="{{item.imgurls}}" alt="Not Images For This Product">
+    </div>
+    <div class="lst-text-info">
+        <h4>Title: <span>{{item.title}}</span></p></h4>
+        <h4>Price: <span>{{item.currentbid}}$</span></h4>
+        <h4>Decription: <span>{{item.decription}}</span></h4>
+        <h4>Time: <span>{{item.time}}</span></h4>
         <a href="{% url 'auctions:listing' item.id %}">View By Listing</a>
-        <br>
+    </div>
+    </div>
     {% endfor %}
 {% endblock %}

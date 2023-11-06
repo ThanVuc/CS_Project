@@ -1,0 +1,49 @@
+.listing-info{
+    height: 43vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+}
+
+.lst-img{
+    height: 100%;
+    width: 27vw;
+    margin-right: 5vw;
+    display: flex;
+    align-items: center;
+}
+
+.lst-text-info{
+    margin-top: 3vh
+}
+
+img{
+    height: 100%;
+    width: 27vw;
+    object-fit: contain;
+}
+
+h4{
+    font-size: 16px;
+    font-family: sans-serif;
+    color: rgb(3, 90, 55);
+}
+
+span{
+    color: black;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(69, 120, 196);
+}
+
+a:visited{
+    color: rgb(69, 120, 196);
+}
+
+a:hover{
+    color: rgb(4, 60, 143);
+    text-decoration: underline;
+}

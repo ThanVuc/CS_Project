@@ -1,6 +1,20 @@
 {% extends "users/layout.html" %}
 {% block title %}
     <title>Change Password</title>
+    <style>
+        .changing{
+            height: 13vh;
+            width: 40vw;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .inp{
+            height: 4vh;
+            width: 15vw;
+        }
+    </style>
 {% endblock %}
 
 {% block body %}
@@ -9,12 +23,18 @@
     <br>
     <form action="{% url 'users:changing' %}" method="post">
         {% csrf_token %}
-        <label for="password">Current Password: </label>
-        <input type="password" name="password" id="password">
-        <label for="newpassword">New Password: </label>
-        <input type="password" name="newpassword" id="newpassword">
-        <label for="confirm">Confirmation: </label>
-        <input type="password" name="confirm" id="confirm">
-        <input type="submit" value="Changing Password">
+        <p>Current Password: </p>
+        <input type="password" name="password" id="password" class="inp">
+    <div class="changing">
+    <div>
+        <p>New Password</p>
+        <input type="password" name="newpassword" id="newpassword" class="inp">
+    </div>
+    <div>
+        <p>Confirmation</p>
+        <input type="password" name="confirm" id="confirm" class="inp">
+    </div>
+    </div>
+        <input type="submit" value="Changing Password" style="margin-top: 20px; padding: 7px 10px;">
     </form>
 {% endblock %}

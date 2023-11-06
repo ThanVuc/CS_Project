@@ -1,9 +1,11 @@
 {% extends "auctions/listing_layout.html" %}
 
 {% block bid %}
+<div class="close">
     {% if request.user == winner %}
         <h2>You Won</h2>
     {% else %}
         <h2>The Winner Is: {{winner.last_name}}</h2>
     {% endif %}
+</div>
 {% endblock %}

@@ -1,0 +1,11 @@
+html{
+    font-family: sans-serif;
+}
+
+.btcate{
+    margin-right: 10px;
+    width: 15vw;
+    height: 10vh;
+    margin-top: 10px;
+    background-color: rgb(69, 202, 202);
+}

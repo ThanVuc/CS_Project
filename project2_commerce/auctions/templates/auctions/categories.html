@@ -7,8 +7,10 @@
 {% block body %}
     <form action="{% url 'auctions:categories' %}" method="post">
         {% csrf_token %}
+        <div class="group-btcate">
             {% for cate in categories %}
-            <input type="submit" name="type" value="{{cate.name}}">
+            <input type="submit" name="type" value="{{cate.name}}" class="btcate">
             {% endfor %}
+        </div>
     </form>
 {% endblock %}

@@ -2,6 +2,26 @@
 
 {% block title %}
     <title>Register</title>
+    <style>
+        .log{
+            height: 4vh;
+            width: 15vw;
+        }
+
+        .user{
+            height: 13vh;
+            width: 40vw;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .inp{
+            height: 4vh;
+            width: 15vw;
+        }
+
+    </style>
 {% endblock %}
 
 {% block body %}
@@ -9,19 +29,36 @@
     <h2> {{message}} </h2>
     <form action="{% url 'users:register' %}" method="post">
     {% csrf_token %}
-        <label for="first">First Name: </label>
-        <input type="text" name="first" id="first">
-        <label for="last">Last Name: </label>
-        <input type="text" name="last" id="last">
-        <label for="email">Email: </label>
-        <input type="email" name="email" id="email">
-        <label for="username">Username: </label>
-        <input type="text" name="username" id="username">
-        <label for="password">Password: </label>
-        <input type="password" name="password" id="password">
-        <label for="confirmation">Confirmation: </label>
-        <input type="password" name="confirmation" id="confirmation">
-
-        <input type="submit" value="Register">
+    <div class="user">
+        <div>
+            <p>First Name: </p>
+            <input type="text" name="first" class="inp">
+        </div>
+        <div>
+            <p>Last Name: </p>
+            <input type="text" name="last" class="inp">
+        </div>
+    </div>
+    <div class="user">
+    <div>
+        <p>Username: </p>
+        <input type="text" name="username" class="inp">
+    </div>
+    <div>
+        <p>Email: </p>
+        <input type="email" name="email" class="inp">
+    </div>
+    </div>
+    <div class="user">
+    <div>
+        <p>Password: </p>
+        <input type="password" name="password" class="inp">
+    </div>
+    <div>
+        <p>Confirmation: </p>
+        <input type="password" name="confirmation" class="inp">
+    </div>
+    </div>
+    <input type="submit" value="Register" style="margin-top: 20px; padding: 7px 15px;">
     </form>
 {% endblock %}

@@ -1,51 +1,70 @@
 {% extends "auctions/layout.html" %}
 
 {% block title %}
-    <title>Listing</title>
+<title>Listing</title>
 {% endblock %}
 
 {% block body %}
-<h2>Listing: {{listing.title}}</h1>
+<div class="head">
+    <h1 style="color: rgb(94, 63, 206);">Listing: {{listing.title}}</h1>
     <form action="{% url 'auctions:close' listing.id %}" method="post">
-    {% csrf_token %}
-    {% if listing.create_user == request.user and listing.is_active == True %}
-        <input type="submit" value="Close">
-    {% endif %}
+        {% csrf_token %}
+        {% if listing.create_user == request.user and listing.is_active == True %}
+        <input type="submit" value="Close" style="padding: 10px 20px; background-color: rgb(238, 152, 152);">
+        {% endif %}
     </form>
-<form action="{% url 'auctions:watchlist' %}" method="post">
-{% csrf_token %}
-    {% if in_watchlist %}
-        <button value="{{listing.id}}" name="listing_id">Remove WatchList</button>
-    {% else %}
-        <button value="{{listing.id}}" name="listing_id">Add WatchList</button>
-    {% endif %}
-</form>
+</div>
 
-<img src="{{listing.imgurls}}" alt="">
-<br>
-<h3><q>{{listing.decription}}</q></h3>
-<br>
+<div>
+    <form action="{% url 'auctions:watchlist' %}" method="post">
+        {% csrf_token %}
+        {% if in_watchlist %}
+        <button value="{{listing.id}}" name="listing_id" class="btwatch-remove">Remove WatchList</button>
+        {% else %}
+        <button value="{{listing.id}}" name="listing_id" class="btwatch-add">Add WatchList</button>
+        {% endif %}
+    </form>
+</div>
+
+<div class="img-decription">
+    <div class="img">
+        <img src="{{listing.imgurls}}" alt="">
+    </div>
+    <h3 style="color: rgb(109, 116, 7);">DECRIPTIONS: <p style="color: black; font-weight: normal;">
+            {{listing.decription}}</p>
+    </h3>
+
+</div>
+
 {% block bid %}
 {% endblock %}
 
 {% block comment %}
 {% endblock %}
-{% for cmt in comments %}
-    {{cmt.content}}
-    <br>
-    ~By: {{cmt.author.last_name}}
-    <br>
-{% endfor %}
-<br>
-<form action="{% url 'auctions:comment' listing.id %}" method="post">
-    {% csrf_token %}
-    <input type="submit" name="more_cmt" value="Display More Comments">
-</form>
-<br>
-<h2>Details</h2>
-<ul>
-    <li>List By: {{listing.usercreate.last_name}}</li>
-    <li>Category: {{listing.category.name}}</li>
-    <li>Time List: {{listing.time}}</li>
-</ul>
+<div class="comment-display">
+
+    {% for cmt in comments %}
+    <div class="cmt">
+        <p>{{cmt.content}}</p>
+        <p style="margin-top: -10px;">~By: {{cmt.author.username}}</p>
+    </div>
+    {% endfor %}
+
+    <form action="{% url 'auctions:comment' listing.id %}" method="post">
+        {% csrf_token %}
+        <div>
+            <input type="submit" name="more_cmt" value="Display More Comments"
+                style="padding: 10px 5px; background-color: rgb(186, 214, 214);">
+        </div>
+    </form>
+
+    <div class="detail">
+        <h2>Details</h2>
+        <ul>
+            <li>List By: {{listing.usercreate.last_name}}</li>
+            <li>Category: {{listing.category.name}}</li>
+            <li>Time List: {{listing.time}}</li>
+        </ul>
+    </div>
+</div>
 {% endblock %}

@@ -2,6 +2,12 @@
 
 {% block title %}
     <title>Login</title>
+    <style>
+        .inp{
+            height: 4vh;
+            width: 15vw;
+        }
+    </style>
 {% endblock %}
 
 {% block body %}
@@ -9,14 +15,12 @@
     <h2> {{message}} </h2>
     <form action="{% url 'users:login' %}" method="post">
     {% csrf_token %}
-        <label for="username">Username: </label>
-        <input type="text" name="username" id="username">
+        <p>Username: </p>
+        <input type="text" name="username" class="inp">
+        <p>Password: </p>
+        <input type="password" name="password" class="inp">
         <br>
-        <label for="password">Password: </label>
-        <input type="password" name="password" id="password">
-
-        <input type="submit" value="Login">
+        <input type="submit" value="Login" style="margin-top: 10px; padding: 7px 17px;">
     </form>
     <p>If you have not already account, please <a href="{% url 'users:register' %}">Register</a></p>
-
 {% endblock %}
