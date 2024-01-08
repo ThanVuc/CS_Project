@@ -1,0 +1,78 @@
+{% extends 'mailview/layout.html' %}
+{% load static %}
+{% block title %}
+MailBox
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    {% if isURL %}
+    {% if id %}
+    <script>
+        detail_getAndHandleAPI("{{id}}");
+    </script>
+    {% else %}
+    <script>
+        if ("{{box}}" !== 'compose')
+            document.addEventListener('DOMContentLoaded', () => loadMailBox("{{box}}"));
+        else
+            document.addEventListener('DOMContentLoaded', () => loadCompose());
+    </script>
+    {% endif %}
+    {% endif %}
+    <div id="detailview" style="display: none;"></div>
+
+    <div id="mailBox" style="display: none;"></div>
+
+    <div id="compose">
+        <h1 class="mt-1 text-success">Compose: </h1>
+        <form id="compose-form">
+            <div class="input-group mb-3 row">
+                <span class="input-group-text col-sm-2">Sender: </span>
+                <input class="form-control" readonly type="text" name="" id="sender" value="{{request.user.email}}">
+            </div>
+
+            <div class="input-group mb-3 row">
+                <span class="input-group-text col-sm-2">Recipients: </span>
+                <input type="text" class="form-control " name="" id="recipients" placeholder="Enter recipients List">
+            </div>
+
+            <div class="input-group mb-3 row">
+                <span class="input-group-text col-sm-2">Subject: </span>
+                <input type="text" class="form-control" name="" id="subject" placeholder="Enter subject">
+            </div>
+
+            <div class="mb-3 row">
+                <span class="input-group-text col-sm-2">Body: </span>
+                <textarea name="" class="form-control mt-3 col-12" id="body" cols="30" rows="6"></textarea>
+            </div>
+
+            <button id="bt-oldmail" class="btn mb-2" style="display: none;">...</button>
+
+            <div class="mb-3 row" style="display: none;" id="oldmail-block">
+                <span class="input-group-text col-sm-2">Old Mail: </span>
+                <textarea name="" class="form-control mt-3 col-12" id="oldmail" cols="30" rows="6"></textarea>
+            </div>
+
+            <div class="d-flex justify-content-end mb-3">
+                <input id="submit-compose" type="submit" class="btn btn-outline-primary" value="Sent">
+            </div>
+
+        </form>
+    </div>
+</div>
+
+{% if not isURL %}
+<script>
+    loadMailBox('Inbox');
+</script>
+{% endif %}
+</div>
+{% endblock %}
+
+
+{% block script %}
+<script src="{% static 'mailview/inbox.js' %}"></script>
+<script src="{% static 'mailview/paging.js' %}"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}

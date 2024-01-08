@@ -1,0 +1,18 @@
+{% extends 'mailview/layout.html' %}
+{% load static %}
+{% block title %}
+MailBox
+{% endblock %}
+
+{% block body %}
+<div>
+    <div id="email"></div>
+    <ul class="pagination"></ul>
+</div>
+{% endblock %}
+
+
+{% block script %}
+<script src="{% static 'mailview/paging.js' %}"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}

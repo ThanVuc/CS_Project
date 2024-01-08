@@ -1,0 +1,39 @@
+{% extends 'user/layout.html' %}
+
+{% block title %}
+Delete Account
+{% endblock %}
+
+{% block js %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('form').onsubmit = function (event) {
+            let choice = confirm("Do you really want to Delete Current Account?")
+            if (choice === false) {
+                event.preventDefault();
+            }
+        }
+    })
+</script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h4 class="text-danger">{{message}}</h4>
+    <h1 class="header mt-3">Delete Account: </h1>
+    <form action="{% url 'user:deleteAcc' %}" method="post">
+        {% csrf_token %}
+        <label for="mail">Email: </label>
+        <input type="email" class="form-control margin-inp-changing mb-3 mt-1" name="mail" id="mail"
+            placeholder="Enter email">
+        <label for="passwd">Password: </label>
+        <input type="password" class="form-control margin-inp-changing mb-3 mt-1" name="passwd" id="oldpasswd"
+            placeholder="Enter password">
+        <label for="confirm">Confirmation Password: </label>
+        <input type="password" class="form-control margin-inp-changing mb-3 mt-1" name="confirm" id="confirm"
+            placeholder="Enter confirmation">
+        <input type="submit" id="submit" class="btn btn-primary margin-inp-changing mb-3 mt-1" value="Delete">
+    </form>
+    <a href="{% url 'user:index' %}" class="">Back To User</a>
+</div>
+{% endblock %} mt-1

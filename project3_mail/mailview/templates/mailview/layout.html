@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'mailview/mailstyle.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{% static 'mailview/userstyle.css' %}">
+ 
+    <title>{% block title %}{% endblock %}</title>
+    {% block script %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <nav class="navbar fixed-top w-25 pt-0"
+                    style="padding: 0; margin-bottom: 1000px; overflow-y: auto; background-color: rgb(240, 240, 239);">
+                    <div class="container-fluid nav2 d-flex flex-column justify-content-start" style="padding: 0;">
+                        <ul class="navbar-nav w-100">
+                            <li class="nav-item pt-2 pb-2 w-75" style="margin-left: 7%;">
+                                <a href="{% url 'mailview:index' %}">
+                                    <img src="{% static 'mailview/logo_gmail_lockup_default_2x_r5.png' %}" alt=""
+                                        class="w-75">
+                                </a>
+                                <h5 class="a ms-2"><a href="{% url 'user:index' %}" class="text-info">{{request.user.email}}</a></h5>
+                            </li>
+                            <li class="nav-item pills pt-3">
+                                <button class="nav-link" id="Inbox">
+                                    <h5>Inbox</h5>
+                                </button>
+                            </li>
+                            <li class="nav-item pills pt-3">
+                                <button class="nav-link" id="Compose">
+                                    <h5>Compose</h5>
+                                </button>
+                            </li>
+                            <li class="nav-item pills pt-3">
+                                <button class="nav-link" id="Sent">
+                                    <h5>Sent</h5>
+                                </button>
+                            </li>
+                            <li class="nav-item pills pt-3">
+                                <button class="nav-link" id="Archived">
+                                    <h5>Archived</h5>
+                                </button>
+                            </li>
+                            <li class="nav-item pills pt-3">
+                                <h5><a class="nav-link" href="{% url 'user:logout' %}">Logout</a></h5>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-9">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

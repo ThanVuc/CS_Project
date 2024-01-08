@@ -1,0 +1,71 @@
+@media screen and (max-width: 600px) {
+    h5 {
+        font-size: 2vw;
+    }
+
+    h1{
+        font-size: 3vw;
+    }
+}
+
+
+
+.nav2 {
+    height: 100vh;
+    background-color: rgb(240, 240, 239);
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.btn-outline-secondary {
+    border-color: rgb(240, 240, 239);
+    --bs-btn-active-bg: rgb(194, 194, 194);
+    --bs-btn-active-border-color: rgb(203, 203, 203);
+}
+
+.btn-outline-secondary:hover {
+    background-color: rgb(221, 221, 221);
+    border-color: rgb(159, 159, 159);
+}
+
+.pills {
+    padding-left: 15%;
+}
+
+.pills:hover {
+    background-color: rgb(218, 214, 214);
+}
+
+.bg-color{
+    background-color: rgb(217, 217, 217);
+}
+
+.mail-link{
+    font-size: 1.1vw;
+}
+
+.mail-detail{
+    font-size: 1.2vw;
+}
+
+@media screen and (max-width: 500px) {
+    .frame{
+        width: 17%;
+        font-weight: bold;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .frame{
+        width: 15%;
+        font-weight: bold;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .frame{
+        width: 14%;
+        font-weight: bold;
+    }
+}

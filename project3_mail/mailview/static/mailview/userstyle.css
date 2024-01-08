@@ -1,0 +1,10 @@
+.margin-inp-changing{
+    margin-bottom: 3%;
+    margin-top: 5px;
+}
+
+@media screen and (max-width: 407px){
+    .header{
+        font-size: 5vw;
+    }
+}

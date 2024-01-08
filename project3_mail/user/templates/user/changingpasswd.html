@@ -1,0 +1,39 @@
+{% extends 'user/layout.html' %}
+{% block title %}
+Changing Password
+{% endblock %}
+
+{% block body %}
+<h4 class="text-danger">{{message}}</h4>
+<h1 class="header">Changing Password: </h1>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form action="{% url 'user:changingPasswd' %}" method="post">
+                {% csrf_token %}
+
+                <label for="mail">Email: </label>
+                <input type="email" class="form-control margin-inp-changing mt-1" name="mail" id="mail"
+                    placeholder="Enter email">
+                <div class="mt-3 ">
+                    <label for="oldpasswd">Password: </label>
+                    <input type="password" class="form-control margin-inp-changing mt-1" name="oldpasswd" id="oldpasswd"
+                        placeholder="Enter password">
+                </div>
+                <div class="mt-3 ">
+                    <label for="newpasswd">New Password: </label>
+                    <input type="password" class="form-control margin-inp-changing mt-1" name="newpasswd" id="newpasswd"
+                        placeholder="Enter new password">
+                </div>
+                <div class="mt-3 mb-3">
+                    <label for="confirm">Confirmation New Password: </label>
+                    <input type="password" class="form-control margin-inp-changing mt-1" name="confirm" id="confirm"
+                        placeholder="Enter confirmation">
+                    <input type="submit" class="btn btn-primary margin-inp-changing mt-2" value="Changing">
+                </div>
+            </form>
+        </div>
+    </div>
+    <a href="{% url 'user:index' %}" class="">Back To User</a>
+</div>
+{% endblock %}
